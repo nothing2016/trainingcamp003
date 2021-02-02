@@ -1,5 +1,8 @@
 package class03;
 
+/**
+ * 最长公共子串问题
+ */
 public class Code05_LCSubstring {
 
 	public static String lcst1(String str1, String str2) {

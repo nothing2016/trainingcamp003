@@ -1,5 +1,8 @@
 package class03;
 
+/**
+ * 最长公共子序列问题
+ */
 public class Code04_LCSubsequence {
 
 	public static int lcs(String s1, String s2) {

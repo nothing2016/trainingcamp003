@@ -1,5 +1,8 @@
 package class04;
 
+/**
+ * 最长递增子序列的解法O(nlogN)
+ */
 public class Code04_LIS {
 
 	public static int[] lis1(int[] arr) {
@@ -53,28 +56,49 @@ public class Code04_LIS {
 
 	public static int[] getdp2(int[] arr) {
 		int[] dp = new int[arr.length];
+		// ends数组就是为了使用二分加速的
+		// ends[i] 表示所有长度为i+1长度的递增子序列结尾的值为ends[i]
+		// 这里的值一定是 下标递增  并且值也递增的
 		int[] ends = new int[arr.length];
 		ends[0] = arr[0];
 		dp[0] = 1;
-		int right = 0; // 0....right   right往右无效
+		int right = 0; // 0....right 是 ends的有效区内,   right往右无效
 		int l = 0;
 		int r = 0;
 		int m = 0;
 		for (int i = 1; i < arr.length; i++) {
+			// 有效区内找到大于等于arr[i]的最左位置
 			l = 0;
 			r = right;
-			while (l <= r) {
-				m = (l + r) / 2;
-				if (arr[i] > ends[m]) {
-					l = m + 1;
-				} else {
-					r = m - 1;
+			// 最左位置用mostLeft标记
+			int mostLeft = r + 1;
+			int target = arr[i];
+			while(l <=r){
+				int mid = (l + r)/2;
+				if(target<=ends[mid]){
+					mostLeft = mid;
+					r = mid -1;
+				}else{
+					l = mid + 1;
 				}
 			}
-			// l -> right+1
-			right = Math.max(right, l);
-			ends[l] = arr[i];
-			dp[i] = l + 1;
+			// 扩展有效区
+			right = Math.max(right, mostLeft);
+			ends[mostLeft] = arr[i];
+			// 最右位置ans左边包含自己在内有多少个数，就是dp[i]的长度
+			dp[i] = mostLeft + 1;
+//			while (l <= r) {
+//				m = (l + r) / 2;
+//				if (arr[i] > ends[m]) {
+//					l = m + 1;
+//				} else {
+//					r = m - 1;
+//				}
+//			}
+//			// l -> right+1
+//			right = Math.max(right, l);
+//			ends[l] = arr[i];
+//			dp[i] = l + 1;
 		}
 		return dp;
 	}

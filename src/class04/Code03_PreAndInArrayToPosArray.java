@@ -27,6 +27,18 @@ public class Code03_PreAndInArrayToPosArray {
 	}
 
 	//  L1...R1  L2...R2  L3...R3
+	/**
+	 * 将先序遍历的位置[L1,R1]，后序的[L2,R2]填充到后序的[L3,R3]中
+	 * @param pre
+	 * @param L1
+	 * @param R1
+	 * @param in
+	 * @param L2
+	 * @param R2
+	 * @param pos
+	 * @param L3
+	 * @param R3
+	 */
 	public static void process1(
 			int[] pre, int L1, int R1, 
 			int[] in, int L2, int R2, 
@@ -34,11 +46,14 @@ public class Code03_PreAndInArrayToPosArray {
 		if (L1 > R1) {
 			return;
 		}
+		// 如果先序只有一个数，直接填到后序中即可
 		if (L1 == R1) {
 			pos[L3] = pre[L1];
 			return;
 		}
+		//如果不是一个数，那么前序的第一个数就是后序的最后一个数
 		pos[R3] = pre[L1];
+		//中序遍历中找到前序的第一个数（这里必须使用preInToPos2中的map来优化，不然就是O(n^2)级别的了）
 		int mid = L2;
 		for (; mid <= R2; mid++) {
 			if (in[mid] == pre[L1]) {

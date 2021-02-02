@@ -2,6 +2,10 @@ package class04;
 
 import java.util.TreeMap;
 
+/**
+ * 打印文件目录的层次结构
+ * 题解：1.构建前缀树 2 遍历树打印即可
+ */
 public class Code01_GetFolderTree {
 
 	public static class Node {
@@ -64,18 +68,16 @@ public class Code01_GetFolderTree {
 
 	public static void main(String[] args) {
 		
-		//    "a\b\c" '\'  a,b,c
-		String test = "a\\b\\cd";
-		
-		
-		
-		
+//		//    "a\b\c" '\'  a,b,c
+//		String test = "a\\b\\cd";
 
-		//  "a\b\c"    "\"    a,b,c
-		String[] arr = test.split("\\\\"); //    \\\\    \\   \
-		for(String str : arr) {
-			System.out.println(str);
-		}
+//		//  "a\b\c"    "\"    a,b,c
+//		String[] arr = test.split("\\\\"); //    \\\\    \\   \
+//		for(String str : arr) {
+//			System.out.println(str);
+//		}
+
+		print(new String[]{"a\\b\\cd","a\\d\\cd","b","b\\45j"} );
 	}
 
 }

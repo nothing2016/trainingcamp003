@@ -1,5 +1,11 @@
 package class06;
 
+/**
+ * 求ai是否是s1和s2的交错值
+ * 如 ai = "1ab2c3"    s1 = "123"  s2 = "abc"
+ * 那么ai是s1和s2的交错值，因为s1的每一个字符串都在s2的前面
+ * 如ab2c31就不是，因为3到1前面去了
+ */
 public class Code06_StringCross {
 
 	public static boolean isCross1(String s1, String s2, String ai) {
@@ -12,6 +18,7 @@ public class Code06_StringCross {
 		if (aim.length != str1.length + str2.length) {
 			return false;
 		}
+		// dp[i][j] 表示 str1的长度为i的前缀串 和 str2的长度为j的前缀串 能否构成ai的长度为i+j的前缀串
 		boolean[][] dp = new boolean[str1.length + 1][str2.length + 1];
 		dp[0][0] = true;
 		for (int i = 1; i <= str1.length; i++) {
@@ -30,7 +37,8 @@ public class Code06_StringCross {
 			for (int j = 1; j <= str2.length; j++) {
 				
 				if (
-						
+						// 如果str1的第i个 和 aim的第i+j个是相等的，
+					    // 并且str1长度为i-1的前缀串 和 str2长度为i的前缀串 能够组成 aim的长度为 i+j-2的交错值
 						(str1[i - 1] == aim[i + j - 1] && dp[i - 1][j])
 						
 						|| 

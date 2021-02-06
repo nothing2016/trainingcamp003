@@ -15,7 +15,9 @@ public class Code05_WordMinPaths {
 			String end,
 			List<String> list) {
 		list.add(start);
+		// 记录节点 key的所有邻居
 		HashMap<String, ArrayList<String>> nexts = getNexts(list);
+		// 记录节点start到节点key的最小路径长度
 		HashMap<String, Integer> distances = getDistances(start, nexts);
 		
 		
@@ -64,7 +66,9 @@ public class Code05_WordMinPaths {
 		set.add(start);
 		while (!queue.isEmpty()) {
 			String cur = queue.poll();
+			// 获取当前节点的邻居
 			for (String next : nexts.get(cur)) {
+				// 如果节点没有加入进来过，防止绕圈圈
 				if (!set.contains(next)) {
 					distances.put(next, distances.get(cur) + 1);
 					queue.add(next);
@@ -92,11 +96,13 @@ public class Code05_WordMinPaths {
 			res.add(new LinkedList<String>(path));
 		} else {
 			for (String next : nexts.get(cur)) {
+				// 必须严格保证是 +1的路径
 				if (distances.get(next) == distances.get(cur) + 1) {
 					getShortestPaths(next, to, nexts, distances, path, res);
 				}
 			}
 		}
+		//回溯擦掉轨迹
 		path.pollLast();
 	}
 

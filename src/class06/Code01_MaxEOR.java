@@ -59,7 +59,9 @@ public class Code01_MaxEOR {
 			int res = 0;
 			for (int move = 31; move >= 0; move--) {
 				int path = (sum >> move) & 1;
-				// 期待的路
+				// 期待的路，第一位，符号位，总是期待是一样的符号，这样就能得到整数
+				// 如果不是第一位，那么希望是相反的数，这样 0^1 = 1
+				// 无论第一位是0还是1，后面的位数永远期待是1，这样才能得到最大值
 				int best = move == 31 ? path : (path ^ 1);
 				// 实际走的路
 				best = cur.nexts[best] != null ? best : (best ^ 1);

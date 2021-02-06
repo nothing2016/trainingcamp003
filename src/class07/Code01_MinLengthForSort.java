@@ -1,5 +1,10 @@
 package class07;
 
+/**
+ * 给定一个无序数组，问要对最少多长的子数组进行排序，使得整体有序
+ *
+ * 如：[1,2,3,4, 7,6,8,9,10]  那么 [7,6]就是需要排序的最短子数组
+ */
 public class Code01_MinLengthForSort {
 
 	public static int getMinLength(int[] arr) {

@@ -3,6 +3,11 @@ package class07;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * 求最小不能构成的累加和
+ *
+ * 如：[1,2,3,10]  最小累加和为1，最大累加和为16，那累加和2,3,4,5,6可以，但是累加和7是不行的，返回7
+ */
 public class Code02_SmallestUnFormedSum {
 
 	public static int unformedSum1(int[] arr) {
@@ -68,6 +73,7 @@ public class Code02_SmallestUnFormedSum {
 			return 0;
 		}
 		Arrays.sort(arr); // O (N * logN)
+		// range表示从[1,rang]上的数可以累加得到了
 		int range = 1;
 		// arr[0] == 1
 		for (int i = 1; i != arr.length; i++) {

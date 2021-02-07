@@ -1,7 +1,7 @@
 package class07;
 
 import java.util.HashMap;
-
+// 952. 按公因数计算最大组件大小
 // 本题为leetcode原题
 // 测试链接：https://leetcode.com/problems/largest-component-size-by-common-factor/
 // 方法1会超时，但是方法2直接通过

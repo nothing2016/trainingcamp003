@@ -1,5 +1,8 @@
 package class08;
 
+/**
+ * 通过怪兽花最小钱的问题
+ */
 public class Code04_MoneyProblem {
 
 	// int[] d d[i]：i号怪兽的武力

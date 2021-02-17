@@ -1,5 +1,11 @@
 package class07;
 
+/**
+ * 给定一个字符串，删除多余的字符，最后每种字符只保留一个，使保留的字符字典序最小
+ * 如：aabbbca  那么最后就是 abc最小
+ *
+ * 题解：贪心算法
+ */
 public class Code05_RemoveDuplicateLettersLessLexi {
 
 	// 在str中，每种字符都要保留一个，让最后的结果，字典序最小 ，并返回
@@ -9,15 +15,19 @@ public class Code05_RemoveDuplicateLettersLessLexi {
 		}
 		int[] map = new int[256];
 		for (int i = 0; i < str.length(); i++) {
+			// 统计每种字符的词频
 			map[str.charAt(i)]++;
 		}
 		int minACSIndex = 0;
 		for (int i = 0; i < str.length(); i++) {
+			// 从左到右遍历一遍，词频减减，当有一个词频为0时break，记录第一个最小Acsii码的下标
+			//记录的下标就是要选的第一个字符下标
 			minACSIndex = str.charAt(minACSIndex) > str.charAt(i) ? i : minACSIndex;
 			if (--map[str.charAt(i)] == 0) {
 				break;
 			}
 		}
+		// 选择minACSIndex后，将字符str[minACSIndex]删除掉，并从minACSIndex + 1 开始选
 		return String.valueOf(str.charAt(minACSIndex)) + removeDuplicateLetters1(
 				str.substring(minACSIndex + 1).replaceAll(String.valueOf(str.charAt(minACSIndex)), ""));
 	}

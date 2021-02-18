@@ -2,7 +2,7 @@ package class07;
 
 /**
  * 求最长的没有重复字符的子串长度
- * 如 abcdae, 那么cdae就是没有重复的最长子串
+ * 如 abcbae, 那么cbae就是没有重复的最长子串
  */
 public class Code06_LongestNoRepeatSubstring {
 

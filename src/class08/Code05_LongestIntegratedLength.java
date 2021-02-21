@@ -3,6 +3,13 @@ package class08;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * 求最长的可整合数组的长度，如果一个数组排序后是严格递增+1的，那么就是可整合数组
+ * 如[13,4,6,5,9,10]的可整合数组就是 [4,6,5]
+ *
+ * 题解：这题不能用滑动窗口，因为没有单调性，如果一个值不符合，那么究竟是r往右还是l往右，无法判断
+ *
+ */
 public class Code05_LongestIntegratedLength {
 
 	public static int getLIL1(int[] arr) {

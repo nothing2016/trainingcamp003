@@ -1,5 +1,11 @@
 package class08;
 
+/**
+ * 硬币凑钱问题
+ *
+ * 给定一组能任意使用张数的货币arbitrary，和一组只能使用一张的货币onlyone，
+ * 问：要正好拼成money数，有多少种组合的方法？
+ */
 public class Code02_MoneyWays {
 
 	public static int moneyWays(int[] arbitrary, int[] onlyone, int money) {
@@ -25,6 +31,12 @@ public class Code02_MoneyWays {
 		return res;
 	}
 
+    /**
+     * 可以重复的硬币拼成money钱，所用的方法数
+     * @param arr
+     * @param money
+     * @return
+     */
 	public static int[][] getDpArb(int[] arr, int money) {
 		if (arr == null || arr.length == 0) {
 			return null;
@@ -49,6 +61,12 @@ public class Code02_MoneyWays {
 		return dp;
 	}
 
+    /**
+     * 不可以重复的硬币拼成money钱，所用的方法数
+     * @param arr
+     * @param money
+     * @return
+     */
 	public static int[][] getDpOne(int[] arr, int money) {
 		if (arr == null || arr.length == 0) {
 			return null;

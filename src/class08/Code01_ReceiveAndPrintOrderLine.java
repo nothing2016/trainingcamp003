@@ -2,6 +2,10 @@ package class08;
 
 import java.util.HashMap;
 
+/**
+ * 直播中，手机端会接受一组有序的包，但是达到的顺序不一定有序，当有连续的包到达时，打印（播放）出来
+ * 请设计这样一个数据结构
+ */
 public class Code01_ReceiveAndPrintOrderLine {
 
 	public static class Node {
